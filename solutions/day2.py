@@ -14,4 +14,13 @@ def execute(program):
             return ["Error in program."]
 
 def day_two_part_one():
-    return execute(input)
+    return execute(list(input))
+
+def substitute_inputs(program, noun, verb):
+    return [program[0]] + [noun] + [verb] + program[3:]
+
+def day_two_part_two():
+    for noun in range(0, 99):
+        for verb in range(0,99):
+            if execute(substitute_inputs(list(input), noun, verb))[0] == 19690720:
+                return (noun, verb)
