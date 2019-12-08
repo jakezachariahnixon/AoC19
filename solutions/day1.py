@@ -108,3 +108,13 @@ def calculate_fuel_requirement(mass):
 
 def day_one_part_one():
     return sum(map(calculate_fuel_requirement, input))
+
+def calculate_fuel_requirement_recursive(mass):
+    if mass <= 8:
+        return 0
+    else:
+        fuel_required = calculate_fuel_requirement(mass)
+        return fuel_required + calculate_fuel_requirement_recursive(fuel_required)
+
+def day_one_part_two():
+    return sum(map(calculate_fuel_requirement_recursive, input))
